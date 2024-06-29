@@ -1,2 +1,0 @@
-# Esercizi-Leetcode
-Esercizi Leetcode 
