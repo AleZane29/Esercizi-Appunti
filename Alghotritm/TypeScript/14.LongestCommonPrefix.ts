@@ -1,3 +1,6 @@
+/*
+Dato un array di stringhe restituisce il prefisso comune a tutte
+*/
 function longestCommonPrefix(strs: string[]): string {
 	let ver: boolean = true;
 	let i: number = -1;

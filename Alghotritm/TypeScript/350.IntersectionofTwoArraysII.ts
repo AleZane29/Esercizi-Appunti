@@ -1,3 +1,6 @@
+/*
+Dati due array restituire gli elementi in comune
+ */
 function intersect(nums1: number[], nums2: number[]): number[] {
 	let res: number[] = [];
 	for (let i = 0; i < nums1.length; i++) {

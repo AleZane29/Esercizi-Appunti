@@ -1,3 +1,6 @@
+/*
+Trasforma un numero da romano a arabo
+*/
 function romanToInt(s: string): number {
 	let ris = 0;
 	for (let i = 0; i < s.length; i++) {

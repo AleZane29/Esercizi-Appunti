@@ -6,7 +6,9 @@ class ListNode {
 		this.next = next === undefined ? null : next;
 	}
 }
-
+/*
+Data una lista la restituisce rovesciata
+*/
 function reverseList(head: ListNode | null): ListNode | null {
 	let prev: ListNode | null = null;
 

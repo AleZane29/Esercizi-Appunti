@@ -8,7 +8,9 @@ class TreeNode {
 		this.right = right === undefined ? null : right;
 	}
 }
-
+/*
+Dato un BST restituirlo bilanciato
+ */
 function balanceBST(root: TreeNode | null): TreeNode | null {
 	let array: number[] = [];
 	const save_val = (tree: TreeNode | null) => {
