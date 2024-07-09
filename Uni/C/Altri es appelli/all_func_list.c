@@ -29,6 +29,8 @@ List *pre_insert_bis(List *ptr, int val);
 void print_list_rec(List *ptr);
 void suf_insert_rec(List **ptr, int val);
 
+void clone_list(List *scrPtr, List **destrPtr);
+
 List *remove_node(List *ptr, int pos);
 
 // stack (pila) e queue (coda)
@@ -54,6 +56,12 @@ int main()
     ord_insert(&mialista, 5);
 
     print_list(mialista);
+    printf("\n");
+
+    List *cloneList;
+    init(&cloneList);
+    clone_list(mialista, &cloneList);
+    print_list(cloneList);
     printf("\n");
 
     mialista = remove_node(mialista, 7);
@@ -137,6 +145,15 @@ void suf_insert_rec(List **ptr, int val)
     else
     {
         pre_insert(ptr, val);
+    }
+}
+
+void clone_list(List *scrPtr, List **destPtr)
+{
+    while (scrPtr != NULL)
+    {
+        suf_insert(destPtr, scrPtr->value);
+        scrPtr = scrPtr->nextPtr;
     }
 }
 
