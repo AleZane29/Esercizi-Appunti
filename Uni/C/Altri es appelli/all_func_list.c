@@ -64,7 +64,7 @@ int main()
     print_list(cloneList);
     printf("\n");
 
-    mialista = remove_node(mialista, 7);
+    mialista = remove_node(mialista, 0);
     print_list(mialista);
     printf("\n");
 
@@ -165,9 +165,9 @@ List *remove_node(List *ptr, int pos)
     }
     if (pos == 0)
     {
-        ptr = ptr->nextPtr;
+        struct List *next = ptr->nextPtr;
         free(ptr);
-        return ptr;
+        return next;
     }
     List *current = ptr;
     while (pos != 1)
