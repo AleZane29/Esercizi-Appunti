@@ -52,6 +52,58 @@ BST *min_right_ptr(BST *root)
     return tmp;
 }
 
+int get_right_min(BST *root)
+{
+    while (root->leftPtr != NULL)
+    {
+        root = root->leftPtr;
+    }
+    return root->valore;
+}
+
+BST *delete_node(BST *ptr, int val)
+{
+    if (ptr == NULL)
+    {
+        return NULL;
+    }
+    if (val < ptr->valore)
+    {
+        ptr->leftPtr = delete_node(ptr->leftPtr, val);
+    }
+    else if (val > ptr->valore)
+    {
+        ptr->rightPtr = delete_node(ptr->rightPtr, val);
+    }
+    else
+    {
+        if (ptr->leftPtr == NULL && ptr->rightPtr == NULL)
+        {
+            free(ptr);
+            return NULL;
+        }
+        else if (ptr->leftPtr == NULL)
+        {
+            BST *tmp = ptr->rightPtr;
+            free(ptr);
+            return tmp;
+        }
+        else if (ptr->rightPtr == NULL)
+        {
+            BST *tmp = ptr->leftPtr;
+            free(ptr);
+            return tmp;
+        }
+        else
+        {
+            int min = get_right_min(ptr->rightPtr);
+            ptr->valore = min;
+            ptr->rightPtr = delete_node(ptr->rightPtr, min);
+        }
+    }
+    return ptr;
+}
+
 void delete_node_rec(BST **ptrPtr)
 {
     BST *currPtr = *ptrPtr;
@@ -91,6 +143,10 @@ int main()
     ordinsert(&albero, 6);
     print_rec(albero);
 
+    printf("\n");
+
+    albero = delete_node(albero, 1);
+    print_rec(albero);
     printf("\n");
 
     printf("valore: %d\n", ((albero->leftPtr)->valore));

@@ -64,7 +64,7 @@ int main()
     print_list(cloneList);
     printf("\n");
 
-    mialista = remove_node(mialista, 0);
+    mialista = remove_node(mialista, 8);
     print_list(mialista);
     printf("\n");
 

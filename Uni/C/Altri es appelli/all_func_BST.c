@@ -168,17 +168,17 @@ int search(BST *ptr, int val)
 {
     while (ptr != NULL)
     {
-        if (val > ptr->value)
+        if (ptr->value == val)
         {
-            ptr = ptr->rightPtr;
+            return 1;
         }
-        else if (val < ptr->value)
+        else if (ptr->value > val)
         {
             ptr = ptr->leftPtr;
         }
-        else
+        else if (ptr->value < val)
         {
-            return 1;
+            ptr = ptr->rightPtr;
         }
     }
     return 0;

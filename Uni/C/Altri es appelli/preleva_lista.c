@@ -45,7 +45,6 @@ List *remove_node(List *ptr, int pos)
         pos--;
     }
     List *next = current->nextPtr->nextPtr;
-    // printf("val:%d\n", current->nextPtr->value);
     free(current->nextPtr);
     current->nextPtr = next;
     return ptr;
@@ -78,8 +77,6 @@ List *preleva(List **L, int *a, int dim)
         tmp = tmp->nextPtr;
         indexL++;
         (*L) = remove_node(*L, a[i] - i);
-        // print_list(*L);
-        // printf("\n");
     }
     return res;
 }
