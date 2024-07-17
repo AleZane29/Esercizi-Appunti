@@ -23,6 +23,7 @@ int isBST(BST *ptr);
 int get_right_min(BST *ptr);
 BST *delete_node(BST *ptr, int val);
 
+BST *forest(BST **ptr, int val);
 // funzioni di "servizio" (per visualizzazione)
 
 int main(void)
@@ -41,12 +42,20 @@ int main(void)
     print_rec(albero);
     printf("\n");
 
-    int v = 1;
-    printf("L'albero contiene il valore %d? %d\n", v, search(albero, v));
-    printf("L'albero e' BST? %d\n", isBST(albero));
+    // int v = 1;
+    // printf("L'albero contiene il valore %d? %d\n", v, search(albero, v));
+    // printf("L'albero e' BST? %d\n", isBST(albero));
 
-    albero = delete_node(albero, 2);
+    // albero = delete_node(albero, 2);
+    // print_rec(albero);
+    // printf("\n");
+
+    BST *albero2;
+    init(&albero2);
+    albero2 = forest(&albero, 5);
     print_rec(albero);
+    printf("\n");
+    print_rec(albero2);
     printf("\n");
 
     return 0;
@@ -203,6 +212,43 @@ int search_rec(BST *ptr, int val)
         }
     }
     return 0;
+}
+
+BST *forest(BST **ptr, int val)
+{
+
+    BST *prev = NULL;
+    while (*ptr != NULL)
+    {
+        if ((*ptr)->value < val)
+        {
+            prev = *ptr;
+            ptr = &((*ptr)->rightPtr);
+        }
+        else if ((*ptr)->value > val)
+        {
+            prev = *ptr;
+            ptr = &((*ptr)->leftPtr);
+        }
+        else
+        {
+            BST *tmp = *ptr;
+            if (prev == NULL)
+            {
+                *ptr = NULL;
+                return tmp;
+            }
+            if (prev->leftPtr->value == val)
+            {
+                prev->leftPtr = NULL;
+            }
+            else
+            {
+                prev->rightPtr = NULL;
+            }
+            return tmp;
+        }
+    }
 }
 
 // inserimento in ordine (con ricorsione)
