@@ -31,6 +31,7 @@ void print_list_rec(List *ptr);
 void suf_insert_rec(List **ptr, int val);
 
 void clone_list(List *scrPtr, List **destrPtr);
+void clone_invlist(List *scrPtr, List **destrPtr);
 
 List *remove_node(List *ptr, int pos);
 
@@ -61,7 +62,7 @@ int main()
 
     List *cloneList;
     init(&cloneList);
-    clone_list(mialista, &cloneList);
+    clone_invlist(mialista, &cloneList);
     print_list(cloneList);
     printf("\n");
 
@@ -154,6 +155,18 @@ void clone_list(List *scrPtr, List **destPtr)
     while (scrPtr != NULL)
     {
         suf_insert(destPtr, scrPtr->value);
+        scrPtr = scrPtr->nextPtr;
+    }
+}
+
+void clone_invlist(List *scrPtr, List **destrPtr)
+{
+    while (scrPtr != NULL)
+    {
+        List *tmp = *destrPtr;
+        *destrPtr = malloc(sizeof(List));
+        (*destrPtr)->nextPtr = tmp;
+        (*destrPtr)->value = scrPtr->value;
         scrPtr = scrPtr->nextPtr;
     }
 }
