@@ -13,6 +13,6 @@ def Split(A, n):
   return True
 
 
-A = [1, 3, 2, 7, 5, 6 , 4, 4]
+A = [4,5,6,5]
 n=int(len(A)/2)
 print(Split(A,n))
